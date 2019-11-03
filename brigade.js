@@ -23,8 +23,8 @@ events.on("push", async (e, p) => {
       slack.env = {
         SLACK_WEBHOOK: p.secrets.SLACK_WEBHOOK,
         SLACK_USERNAME: "Brigade",
-        SLACK_TITLE: "Hello from Brigade",
-        SLACK_MESSAGE: "This is a message from Brigade"
+        SLACK_TITLE: "sampleapp CI trigger",
+        SLACK_MESSAGE: "Sampleapp built and tested successfully!s"
       }          
   
     Group.runEach([compileStep,testStep,publishStep,slack])
