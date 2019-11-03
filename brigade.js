@@ -19,9 +19,6 @@ events.on("push", async () => {
             "dotnet publish",
           ];          
   
-      
-    compileStep.run();      
-    testStep.run();
-    publishStep.run();
+    Group.runEach([compileStep,testStep,publishStep])
     
   });
