@@ -23,7 +23,7 @@ events.on("push", async () => {
   
     var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
     slack.env = {
-      SLACK_WEBHOOK: "https://hooks.slack.com/services/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",
+      SLACK_WEBHOOK: "p.secrets.SLACK_WEBHOOK",
       SLACK_USERNAME: "Brigade",
       SLACK_TITLE: "Hello from Brigade",
       SLACK_MESSAGE: "This is a message from Brigade"
