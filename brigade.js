@@ -13,20 +13,20 @@ events.on("push", async (e, p) => {
           "dotnet test",
         ];  
 
-        var publishStep = new Job("publish", "mcr.microsoft.com/dotnet/core/sdk:3.0")
-        publishStep.tasks = [
-            "cd src",
-            "dotnet publish",
-          ];          
+      var publishStep = new Job("publish", "mcr.microsoft.com/dotnet/core/sdk:3.0")
+      publishStep.tasks = [
+          "cd src",
+          "dotnet publish",
+        ];          
+
+      var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
+      slack.env = {
+        SLACK_WEBHOOK: p.secrets.SLACK_WEBHOOK,
+        SLACK_USERNAME: "Brigade",
+        SLACK_TITLE: "Hello from Brigade",
+        SLACK_MESSAGE: "This is a message from Brigade"
+      }          
   
-    Group.runEach([compileStep,testStep,publishStep])
+    Group.runEach([compileStep,testStep,publishStep,slack])
   
-    var slack = new Job("slack-notify", "technosophos/slack-notify:latest", ["/slack-notify"])
-    slack.env = {
-      SLACK_WEBHOOK: p.secrets.SLACK_WEBHOOK,
-      SLACK_USERNAME: "Brigade",
-      SLACK_TITLE: "Hello from Brigade",
-      SLACK_MESSAGE: "This is a message from Brigade"
-   }
-    slack.run()    
   });
