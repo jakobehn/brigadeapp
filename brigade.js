@@ -5,9 +5,23 @@ events.on("push", async () => {
     compileStep.tasks = [
         "cd src",
         "dotnet build",
-        "dotnet publish",
       ];  
 
-    compileStep.run();
+      var testStep = new Job("test", "mcr.microsoft.com/dotnet/core/sdk:3.0")
+      testStep.tasks = [
+          "cd src",
+          "dotnet test",
+        ];  
+
+        var publishStep = new Job("publish", "mcr.microsoft.com/dotnet/core/sdk:3.0")
+        publishStep.tasks = [
+            "cd src",
+            "dotnet publish",
+          ];          
+  
+      
+    compileStep.run();      
+    testStep.run();
+    publishStep.run();
     
   });
