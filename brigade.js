@@ -7,4 +7,7 @@ events.on("push", async () => {
         "dotnet build",
         "dotnet publish",
       ];  
+
+    compileStep.run();
+    
   });
