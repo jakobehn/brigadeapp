@@ -1,5 +1,6 @@
 const { events, Job, Group } = require("brigadier");
 
+
 events.on("push", async (e, p) => {
     var compileStep = new Job("compile", "mcr.microsoft.com/dotnet/core/sdk:3.0")
     compileStep.tasks = [
