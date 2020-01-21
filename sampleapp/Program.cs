@@ -1,6 +1,6 @@
 ﻿using System;
 
-//
+
 namespace sampleapp
 {
     class Program
