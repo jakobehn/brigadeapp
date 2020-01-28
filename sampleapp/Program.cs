@@ -2,6 +2,7 @@
 
 namespace sampleapp
 {
+    // Hello Azure Communiyt Live
     class Program
     {
         static void Main(string[] args)
