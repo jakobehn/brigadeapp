@@ -1,5 +1,6 @@
 ﻿using System;
 
+// a comment
 
 namespace sampleapp
 {
