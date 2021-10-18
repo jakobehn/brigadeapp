@@ -1,6 +1,6 @@
 ﻿using System;
 
-// a comment8
+// a comment
 namespace sampleapp
 {
     class Program
